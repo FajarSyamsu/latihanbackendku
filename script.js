@@ -15,7 +15,7 @@ let products = [];
     list.innerHTML = "<div class='loading'>Sedang memuat menu lezat...</div>";
 
     try {
-        const response = await fetch('https://latihanbackendku.vercel.app/api/products');
+        const response = await fetch('https://ver4-henna.vercel.app/api/products');
         const data = await response.json();
         
         // SINKRONISASI: Masukkan data server ke variabel global
@@ -126,7 +126,7 @@ let products = [];
 
     try {
         // 1. LAPOR KE BACKEND (Simpan Transaksi & Cek Token)
-        const response = await fetch('https://latihanbackendku.vercel.app/api/checkout', {
+        const response = await fetch('https://ver4-henna.vercel.app/api/checkout', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
@@ -202,7 +202,7 @@ window.onload = () => {
 
     // --- 2. CEK KE SERVER (Dari kode baru saya) ---
     try {
-        const response = await fetch('https://latihanbackendku.vercel.app/api/login', {
+        const response = await fetch('https://ver4-henna.vercel.app/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
@@ -251,5 +251,4 @@ function logout() {
     localStorage.removeItem('unida_cart'); // Opsional: hapus keranjang saat logout
     alert("Antum berhasil keluar. Sampai jumpa lagi!");
     location.reload(); // Refresh halaman untuk reset semua state
-
 }
