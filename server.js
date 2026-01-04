@@ -8,8 +8,8 @@ const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
 
 // 2. IMPORT FILE LOCAL (Auth & Controller)
-const authMiddlewareLocal = require('./auth'); 
-const productController = require('./productController');
+//const authMiddlewareLocal = require('./auth'); 
+//const productController = require('./productController');
 
 // 3. INISIALISASI APLIKASI
 const app = express();
@@ -19,7 +19,11 @@ const JWT_SECRET = "UNIDAMALL_SECRET_KEY_2024";
 app.use(helmet({
   crossOriginResourcePolicy: false,
 })); 
-app.use(cors()); 
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json()); 
 
 // Batasi jumlah request (Rate Limiting)
@@ -129,6 +133,9 @@ app.post('/api/checkout', protect, (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+    res.send("Backend UNIDA Mall Online, Akhi!");
+});
 // 8. JALANKAN SERVER
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
