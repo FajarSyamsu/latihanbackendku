@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIDA Mall - Pro Frontend System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+       
+</head>
+<body>
+
+<nav>
+    <div class="logo" onclick="showPage('home')">UNIDA MALL</div>
+    <ul class="nav-links">
+        <li onclick="showPage('home')">Home</li>
+        <li onclick="showPage('katalog')">Produk</li>
+        <li onclick="showPage('login')">Login</li>
+        <li onclick="showPage('dashboard')">Akun</li>
+    </ul>
+</nav>
+
+<div id="home" class="page active">
+    <div class="hero">
+        <h1>Selamat Datang di UNIDA Mall</h1>
+        <p>Pusat Belanja Mahasiswa Gontory</p>
+        <button class="btn btn-primary" style="width: 200px; margin-top: 20px;" onclick="showPage('katalog')">Belanja Sekarang</button>
+    </div>
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 30px;">Kategori Pilihan</h2>
+        <div class="grid" id="featured-categories">
+            </div>
+    </div>
+</div>
+
+<div id="katalog" class="page">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h2>Katalog Produk</h2>
+            <input type="text" id="searchBar" placeholder="Cari produk..." onkeyup="filterProduk()" style="padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+        </div>
+        <div id="product-list" class="grid"></div>
+    </div>
+</div>
+
+<div id="detail" class="page">
+    <div class="container" id="detail-content"></div>
+</div>
+
+<div id="login" class="page">
+    <div class="form-box">
+        <h2>Masuk Ke Akun</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email Antum" required>
+            <input type="password" id="pass" placeholder="Password" required>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem;">Belum punya akun? <span style="color:var(--primary); cursor:pointer;">Daftar</span></p>
+        </form>
+    </div>
+</div>
+
+<div id="dashboard" class="page">
+    <div class="container">
+        <div class="form-box" style="max-width: 800px; margin-top: 50px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 id="welcome-user">Ahlan wa Sahlan!</h2>
+                <button class="btn btn-danger" onclick="logout()" style="padding: 5px 15px;">Logout</button>
+            </div>
+            
+            <hr style="margin: 20px 0;">
+            
+            <div id="user-info">
+                <p><strong>Email:</strong> <span id="display-email">memuat...</span></p>
+                <p><strong>Status:</strong> <span class="badge" style="background: #27ae60; color: white; padding: 2px 8px; border-radius: 5px;">Pembeli Setia</span></p>
+            </div>
+            
+            <h3 style="margin-top: 30px;">Riwayat Pesanan</h3>
+            <div id="order-history" style="background:#f9f9f9; padding: 15px; border-radius: 10px; margin-top: 10px; border: 1px dashed #ccc;">
+                Belum ada pesanan terbaru.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cart-btn" onclick="openCart()">🛒 <span id="cart-count">0</span> Item</div>
+
+<div id="cartModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeCart()">&times;</span>
+        <h2>Keranjang Belanja</h2>
+        <div id="cart-items" style="margin: 20px 0; max-height: 300px; overflow-y: auto;"></div>
+        <div id="cart-total" style="font-weight: bold; font-size: 1.2rem; margin-bottom: 20px;"></div>
+        <button class="btn btn-secondary" onclick="checkoutSistem()">Checkout via WhatsApp</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 UNIDA Food Court & Mall | Frontend Pro</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
